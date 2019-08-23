@@ -31,7 +31,6 @@ infer_transformation = transforms.Compose([
 ])
 
 
-logging.info('1234')
 IMAGES_KEY = 'images'
 MODEL_INPUT_KEY = 'images'
 MODEL_OUTPUT_KEY = 'logits'
