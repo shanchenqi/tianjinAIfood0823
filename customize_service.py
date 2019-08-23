@@ -145,18 +145,7 @@ class FoodPredictService(PTServingBaseService):
         # logits_list = [0.1, -0.12, 0.72, ...]
     
         logits_list = data['images'][0].detach().numpy().tolist()
-    #    maxx = max(logits_list)
-     #   logs = [exp(x-maxx) for x in logits_list]
-    #    sums = sum(logs)
-    #    logits_list = [x/sums for x in logs]
-        
-
-        # labels_to_logits = {
-
-        #     'label_a': 0.1, 'label_b': -0.12, 'label_c': 0.72, ...
-
-        # }
-     #   print('ALL_LIST', ALL_LIST)
+   
         print('LABEL_LIST', LABEL_LIST)
         print('logits_list', logits_list)
 
@@ -169,14 +158,11 @@ class FoodPredictService(PTServingBaseService):
         lis = sorted([(label, possible) for label, possible in labels_to_logits.items()], key = lambda x: -x[1])
 
         labels_to_logits = {label:possible for label, possible in lis}
-        # soft=torch.nn.functional.softmax(data['images'],dim=1)
-        # K=np.argmax(soft.detach().numpy())
-        # K=np.argmax(data['images'].detach().numpy())
+      
         predict_result = {
 
             MODEL_OUTPUT_KEY: labels_to_logits
            
-            # MODEL_OUTPUT_KEY: ALL_LIST[K]
 
         }
         print (predict_result)
